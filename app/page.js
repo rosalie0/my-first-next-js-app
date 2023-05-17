@@ -13,12 +13,16 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
       <div>
-        <h1>Home Page</h1>
-        <h2>Links:</h2>
-        <p>
-          <Link href="/users">Users</Link>
-          <Link href="/posts">Posts</Link>
-        </p>
+        <h1 className="bold text-3xl pb-6">Home Page</h1>
+        <h2 className=" text-xl py-4">Links:</h2>
+        <div className="flex gap-6">
+          <p className="hover:text-blue-500">
+            <Link href="/users">Users</Link>
+          </p>
+          <p className="hover:text-blue-500">
+            <Link href="/posts">Posts</Link>
+          </p>
+        </div>
       </div>
     </main>
   );
