@@ -3,6 +3,18 @@ import getUserPosts from "@/lib/getUserPosts";
 import React, { Suspense } from "react";
 import UserPosts from "./components/UserPosts";
 
+// This makes the tab's title === user.name
+export async function generateMetadata({ params }) {
+  // Go ahead and req user again, next js automatically 'dedupes' or 'de-duplicates' requests.
+  const userData = getSingleUser(params.userId); // don't await
+  const user = await userData;
+
+  return {
+    title: user.name,
+    description: `This is the page of ${user.name}`,
+  };
+}
+
 const SingleUser = async ({ params }) => {
   console.log(params.userId);
 
