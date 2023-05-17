@@ -8,7 +8,6 @@ export async function generateMetadata({ params }) {
   // Go ahead and req user again, next js automatically 'dedupes' or 'de-duplicates' requests.
   const userData = getSingleUser(params.userId); // don't await
   const user = await userData;
-
   return {
     title: user.name,
     description: `This is the page of ${user.name}`,
@@ -16,12 +15,11 @@ export async function generateMetadata({ params }) {
 }
 
 const SingleUser = async ({ params }) => {
-  console.log(params.userId);
-
   // Both of these are promises (they have not been awaited)
   const userData = getSingleUser(params.userId); // don't await
   const userPostsData = getUserPosts(params.userId);
 
+  // REF: https://nextjs.org/docs/app/building-your-application/data-fetching
   // Method 1 (Follows suggesting #2 from docs)
   // This resolves IN PARALLEL, not WATERFALL.
   // We can fire both off at the same time and wait for both to finish (rather than one at a time).
