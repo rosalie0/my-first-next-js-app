@@ -13,6 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      {/* inter.className applies the font to the body. */}
       <body className={inter.className}>{children}</body>
     </html>
   );
